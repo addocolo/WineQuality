@@ -101,3 +101,14 @@ By far, the best individual feature for predicting quality appears to be alcohol
 
 Model Limitations
 It is important to note that while the accuracy score is quite good, the model performs far better in predicting "low" quality wines than "high" quality wines. The top model's precision of 0.65 and recall of 0.43 for the "high" category are both rather unimpressive. This indicates that the model struggles to accurately identify high-quality wines, potentially missing a significant number of true high-quality samples (low recall) and incorrectly labeling low-quality wines as high-quality (moderate precision). It seems possible that these chemical features are inadequate for judging the lower end of the high-quality category and are mixing up wines that had an original score of 6 or 7. It's also possible that a more advanced model could discover underlying relationships that could better predict the quality.
+
+## References
+
+Cortez, P., Cerdeira, A., Almeida, F., Matos, T., & Reis, J. (2009). Wine Quality [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C56S3T.
+
+Feature Importance with Random Forests. (05 Apr, 2024)
+https://www.geeksforgeeks.org/feature-importance-with-random-forests/
+
+Lundy, Daniel. (2023-07-09). A Practical Guide to Wine Quality Prediction using Logistic Regression. https://medium.com/@daniel.lundy.analyst/a-practical-guide-to-wine-quality-prediction-using-logistic-regression-f390c5c4d71f.
+
+Yagci, Hasan Ersan. (Jan 15, 2021). Detecting and Handling Outliers with Pandas. https://hersanyagci.medium.com/detecting-and-handling-outliers-with-pandas-7adbfcd5cad8
