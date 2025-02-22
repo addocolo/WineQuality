@@ -50,6 +50,17 @@ To ensure consistent feature handling throughout our analysis, we first stored t
 
 Since we aimed to classify wines into two quality groups, we binarized the quality score by setting a threshold of 7: wines with a score of 7 or higher were labeled as high quality (1), while those below 7 were labeled as low quality (0). This threshold was chosen because it represents approximately 20% of the dataset, providing a reasonable proportion to be considered better than average. Finally, we split the dataset into training and test sets, allocating 80% for training and 20% for testing.
 
+## Baseline Model Analysis
+
+To establish a performance benchmark, we trained four supervised classification models—Logistic Regression, Random Forest, K-Nearest Neighbors (KNN), and Gradient Boosting—using their default hyperparameters. Each model was fitted to the training data, and predictions were evaluated on both the training and test sets. We measured accuracy to compare performance across models, identifying potential overfitting or underfitting. These baseline results serve as a reference point for further model tuning and optimization. Initial results indicate that all four are competitive models and so we proceeded to the next stage with all four.
+
+- **Logistic Regression**: A linear model that estimates probabilities using a logistic function. It is highly interpretabie and serves as a good baseline, but may encounter issues if relationships are not linear.
+- **Random Forest Classifier**: An ensemble of decision trees that is resistant to overfitting and is still quite interpretable. It’s also useful for handling non-linear relationships in the data.
+- **K-Nearest Neighbors (KNN)**: A distance-based model that classifies samples based on their nearest neighbors. It can be effective when the decision boundary is complex.
+- **Gradient Boosting Classifier**: A powerful ensemble method that sequentially corrects errors from previous models. It often achieves high accuracy but is prone to overfitting.
+
+Each model was chosen to offer a mix of linear, tree-based, and instance-based approaches, allowing us to compare different learning paradigms before refining the best-performing model.
+
 ## Hyperparameter tuning
 
 To optimize model performance, we conducted a grid search with cross-validation to explore different hyperparameter settings for each classifier. The grid search allows us to test multiple combinations of hyperparameters for each classifier and identify the best-performing configuration. We use K-fold cross-validation to reduce the change of overfitting to the training data.
