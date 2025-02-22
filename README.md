@@ -92,16 +92,6 @@ After identifying the best-performing model overall, we conducted a detailed ana
   
 ![8 - top model feature importance](https://github.com/user-attachments/assets/f6d4a64b-2668-47ad-80e4-bc9e7e49fe19)
 
-- ## Conclusions
-
-Model Results
-One of the Gradient Boosting Classifier models emerged as the top-performing model during our testing, with a respectable accuracy score of 0.835. However, upon examining the box plot of performance of all models tested, the Random Forest Classifier appears to be a more consistent predictor, with a higher mean and floor. Overall, all models performed well in training, but due to its highest mean score and relative lack of outlying model scores, if we were to choose a model for this task, we would select the Random Forest Classifier over the others.
-
-By far, the best individual feature for predicting quality appears to be alcohol content. This raises the question of whether people truly enjoy higher alcohol wines or if perhaps imbibing higher alcohol wine puts one in a more generous mood when assigning a rating. Though the answer is outside the scope of this study, we recommend interested readers test this out—responsibly and in moderation, of course.
-
-Model Limitations
-It is important to note that while the accuracy score is quite good, the model performs far better in predicting "low" quality wines than "high" quality wines. The top model's precision of 0.65 and recall of 0.43 for the "high" category are both rather unimpressive. This indicates that the model struggles to accurately identify high-quality wines, potentially missing a significant number of true high-quality samples (low recall) and incorrectly labeling low-quality wines as high-quality (moderate precision). It seems possible that these chemical features are inadequate for judging the lower end of the high-quality category and are mixing up wines that had an original score of 6 or 7. It's also possible that a more advanced model could discover underlying relationships that could better predict the quality.
-
 ## Conclusions
 
 Model Results
