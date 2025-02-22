@@ -30,16 +30,19 @@ For our EDA we will examine several visualizations of our data.
 
 1. **Bar chart of wine qualities stacked**: (fig. 1.1) The bar chart illustrates the distribution of wine qualities across both red and white wines. Quality scores range from 3 to 9, with scores of 5 and 6 being the most frequent and representing the majority of the data. Conversely, there are relatively few quality scores of 3 and 9, which represent outliers of very low and very high quality, respectively. These trends persist across both red and white wines.
 
-![Alt text](https://github.com/addocolo/WineQuality/assets/1 - bar chart quality.png)
+![1 - bar chart quality](https://github.com/user-attachments/assets/cd29703b-2f80-4d2a-9b89-c589cdcc6e16)
 
 2. **Box Plot of Wine Feature Distributions**: (fig. 1.2) The box plot illustrates the distributions of various chemical features in the wine dataset. Several features, such as residual sugar and total sulfur dioxide, display right-skewed distributions with numerous outliers, indicating significant variability. In contrast, features like pH and density exhibit more normal distributions with fewer extreme values, suggesting more consistency. These visual summaries help identify potential outliers and understand the spread and skew of each feature, guiding further analysis and potential data transformations.
 
+![2 - feature distributions](https://github.com/user-attachments/assets/4d2887d1-a0a4-48fa-b789-d12bd0d8a1cb)
+
 3. **Feature Correlation Matrix**: (fig 1.3) The correlation matrix presents the relationships between various chemical properties and their impact on wine quality. Certain features like alcohol content have a moderate positive correlation with wine quality, suggesting that higher alcohol levels are associated with better quality wines. Conversely, features like volatile acidity show a negative correlation with quality, indicating that lower acidity is preferred. Perhaps unsurprisingly free sulfur dioxide and total sulfur dioxide are strongly correlated. Interestingly, it also identifies some features, such as volatiles acidity and total_sulfur dioxide, that are correlated with type, indicating how we might differentiate red from white by chemical features.
+
+![3 - feature correlation](https://github.com/user-attachments/assets/3fd68baf-c56b-4085-9541-d754f410f054)
 
 4. **Feature Pairwise Plot**: (fig 1.4) This plot helps visually expand on the correlation matrix. It provides a comprehensive view of the interaction between the features. 
 
-
-
+![4 - feature pairwise](https://github.com/user-attachments/assets/96e3dd5b-a87a-418e-a552-36097b787321)
 
 ### Data preprocessing
 
