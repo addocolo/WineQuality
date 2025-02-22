@@ -74,18 +74,22 @@ In this section, we present the results of our analysis and model evaluation. We
 We evaluated several supervised learning models to classify wines as "high" or "low" quality based on their chemical features. Our goal was to determine which model offers the best predictive performance.
 
 - **Top Performing Model by Type**: To further explore model performance, we identified the top-performing model for each classifier type. The table below presents the best model of each type, along with their respective mean test accuracy scores and hyperparameters.
+  
 ![5 - top models](https://github.com/user-attachments/assets/ec65f777-9b02-49b4-93c7-7df8131fda04)
 
 - **Box Plot of Mean Test Accuracy Scores**: We also visualized the distribution of mean test accuracy scores for all classifiers using a box plot. This helps to understand the variability in performance across different models and highlights the models that consistently achieve high accuracy.
+  
 ![6 - model accuracies](https://github.com/user-attachments/assets/aefd5037-bf31-477a-8748-425fca605bba)
 
 2. Detailed Analysis of the Best Model
 After identifying the best-performing model overall, we conducted a detailed analysis to evaluate its performance on the test set.
 
 - **Best Model Evaluation**: The best model was selected based on its highest mean test accuracy score during cross-validation. We fitted this model with the optimal hyperparameters and evaluated its performance on the test set. The classification report and confusion matrix provide insights into the model's accuracy, precision, and recall scores.
+
 ![7 - top model confusion](https://github.com/user-attachments/assets/5ac376a1-dee3-411c-9538-4aaca81900d1)
 
 - **Feature Importance**: Since the best model supports feature importance (Gradient Boosting / Random Forest), we analyzed the importance of each feature. This analysis helps to understand which features contribute most to the model's predictions and can offer insights into the underlying factors influencing wine quality.
+  
 ![8 - top model feature importance](https://github.com/user-attachments/assets/f6d4a64b-2668-47ad-80e4-bc9e7e49fe19)
 
 - ## Conclusions
