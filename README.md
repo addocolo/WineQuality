@@ -44,3 +44,59 @@ For our EDA we will examine several visualizations of our data.
 To ensure consistent feature handling throughout our analysis, we first stored the feature names. We then addressed outliers and feature scaling. From our visualizations (fig. 1.3, 1.4), we identified highly skewed features—residual sugar, chlorides, and total sulfur dioxide—and applied a log transformation (log1p) to reduce skewness while preserving data distribution. For extreme values, we applied Winsorization (clipping at the 1st and 99th percentiles) to chlorides and free sulfur dioxide to prevent outliers from disproportionately influencing the models. Continuous numerical features were then normalized using MinMax scaling to ensure comparability across different ranges for logistic regression and K-neighbors.
 
 Since we aimed to classify wines into two quality groups, we binarized the quality score by setting a threshold of 7: wines with a score of 7 or higher were labeled as high quality (1), while those below 7 were labeled as low quality (0). This threshold was chosen because it represents approximately 20% of the dataset, providing a reasonable proportion to be considered better than average. Finally, we split the dataset into training and test sets, allocating 80% for training and 20% for testing.
+
+## Hyperparameter tuning
+
+To optimize model performance, we conducted a grid search with cross-validation to explore different hyperparameter settings for each classifier. The grid search allows us to test multiple combinations of hyperparameters for each classifier and identify the best-performing configuration. We use K-fold cross-validation to reduce the change of overfitting to the training data.
+
+We chose hyperparameter values based on a reasonable range around the default value for each parameter.
+
+- **Logistic Regression**: Logistic regression is sensitive to the regularization parameter C, so a broad range is tested. We focus on l2 penalty, because it is compatible with a number of different solvers.
+
+- **Random Forest Classifier**: We tested a number of different parameters to balance depth and complexity.
+
+- **K-Neighbors Classifier**: We tested broad range of neighbors because it is the most critical hyperparameter, in addition to different metrics for calculating distance.
+
+- **Gradient Boosting Classifier**: We tested multiple values of number of estimators and learning rates to find a balance between overfitting and underfitting.
+
+Following this we insert the results of all models tested of each type into a dataframe in order to compare the performance across the different types of models.
+
+## Results
+
+In this section, we present the results of our analysis and model evaluation. We begin by comparing the performance of various models to identify the top-performing ones. This comparison is followed by an analysis of the best model, including its performance metrics, confusion matrix, and feature importance.
+
+1. Model Performance Comparison
+We evaluated several supervised learning models to classify wines as "high" or "low" quality based on their chemical features. Our goal was to determine which model offers the best predictive performance.
+
+- **Top 10 Performing Models**: The table below lists the top 10 performing models, ranked by their mean test accuracy scores. This provides an overview of how each model performed during cross-validation.
+
+- **Top Performing Model by Type**: To further explore model performance, we identified the top-performing model for each classifier type. The table below presents the best model of each type, along with their respective mean test accuracy scores and hyperparameters.
+
+- **Box Plot of Mean Test Accuracy Scores**: We also visualized the distribution of mean test accuracy scores for all classifiers using a box plot. This helps to understand the variability in performance across different models and highlights the models that consistently achieve high accuracy.
+
+2. Detailed Analysis of the Best Model
+After identifying the best-performing model overall, we conducted a detailed analysis to evaluate its performance on the test set.
+
+- **Best Model Evaluation**: The best model was selected based on its highest mean test accuracy score during cross-validation. We fitted this model with the optimal hyperparameters and evaluated its performance on the test set. The classification report and confusion matrix provide insights into the model's accuracy, precision, and recall scores.
+
+- **Feature Importance**: Since the best model supports feature importance (Gradient Boosting / Random Forest), we analyzed the importance of each feature. This analysis helps to understand which features contribute most to the model's predictions and can offer insights into the underlying factors influencing wine quality.
+
+- ## Conclusions
+
+Model Results
+One of the Gradient Boosting Classifier models emerged as the top-performing model during our testing, with a respectable accuracy score of 0.835. However, upon examining the box plot of performance of all models tested, the Random Forest Classifier appears to be a more consistent predictor, with a higher mean and floor. Overall, all models performed well in training, but due to its highest mean score and relative lack of outlying model scores, if we were to choose a model for this task, we would select the Random Forest Classifier over the others.
+
+By far, the best individual feature for predicting quality appears to be alcohol content. This raises the question of whether people truly enjoy higher alcohol wines or if perhaps imbibing higher alcohol wine puts one in a more generous mood when assigning a rating. Though the answer is outside the scope of this study, we recommend interested readers test this out—responsibly and in moderation, of course.
+
+Model Limitations
+It is important to note that while the accuracy score is quite good, the model performs far better in predicting "low" quality wines than "high" quality wines. The top model's precision of 0.65 and recall of 0.43 for the "high" category are both rather unimpressive. This indicates that the model struggles to accurately identify high-quality wines, potentially missing a significant number of true high-quality samples (low recall) and incorrectly labeling low-quality wines as high-quality (moderate precision). It seems possible that these chemical features are inadequate for judging the lower end of the high-quality category and are mixing up wines that had an original score of 6 or 7. It's also possible that a more advanced model could discover underlying relationships that could better predict the quality.
+
+## Conclusions
+
+Model Results
+One of the Gradient Boosting Classifier models emerged as the top-performing model during our testing, with a respectable accuracy score of 0.835. However, upon examining the box plot of performance of all models tested, the Random Forest Classifier appears to be a more consistent predictor, with a higher mean and floor. Overall, all models performed well in training, but due to its highest mean score and relative lack of outlying model scores, if we were to choose a model for this task, we would select the Random Forest Classifier over the others.
+
+By far, the best individual feature for predicting quality appears to be alcohol content. This raises the question of whether people truly enjoy higher alcohol wines or if perhaps imbibing higher alcohol wine puts one in a more generous mood when assigning a rating. Though the answer is outside the scope of this study, we recommend interested readers test this out—responsibly and in moderation, of course.
+
+Model Limitations
+It is important to note that while the accuracy score is quite good, the model performs far better in predicting "low" quality wines than "high" quality wines. The top model's precision of 0.65 and recall of 0.43 for the "high" category are both rather unimpressive. This indicates that the model struggles to accurately identify high-quality wines, potentially missing a significant number of true high-quality samples (low recall) and incorrectly labeling low-quality wines as high-quality (moderate precision). It seems possible that these chemical features are inadequate for judging the lower end of the high-quality category and are mixing up wines that had an original score of 6 or 7. It's also possible that a more advanced model could discover underlying relationships that could better predict the quality.
