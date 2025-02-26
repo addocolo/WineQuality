@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this study, we use a dataset from the University of California, Irvine, containing chemical features of different types of Vinho Verde from the north of Portugal. It also includes a quality score between 0 and 10. The data is divided into two files: one for red wines and one for white wines. For this study, we combine the two and attempt to classify the "high" quality wines from the "low" quality wines.
+In this study, we use a [dataset from the University of California, Irvine](https://doi.org/10.24432/C56S3T), containing chemical features of different types of Vinho Verde from the north of Portugal. It also includes a quality score between 0 and 10. The data is divided into two files: one for red wines and one for white wines. For this study, we combine the two and attempt to classify the "high" quality wines from the "low" quality wines.
 
 The goal of this project is to categorize wines into either "high" or "low" quality categories based on their chemical features. We would like to discover which features are most associated with higher quality wines. We will use various supervised learning models to identify the best model for this task.
 
@@ -137,6 +137,7 @@ In this section, we present the results of our analysis and model evaluation. We
       - By far the feature with the highest importance was alcohol (0.296), indicating that higher alchohol content is strongly associated with higher quality wines.
       - Volatile acidity and chlorides were second and third place respectively, although not nearly as important as alcohol.
       - The type, red or white, didn't seem to be of much importance at all (0.00077), suggesting that chemical features may vary in a similar way across classes regardless of the wine type.
+
 ![8a - feature importance](https://github.com/user-attachments/assets/560a4ebe-b6dc-4d70-ab8a-b716c328bddf)
 ![8 - top model feature importance](https://github.com/user-attachments/assets/f95d115a-d8fe-4adb-b5df-89418d1237b2)
 
@@ -171,7 +172,7 @@ To improve model performance, several potential avenues for future research coul
 
 Brownlee, Jason. (Mar. 17, 2021). SMOTE for Imbalanced Classification with Python. https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/
 
-Cortez, P., Cerdeira, A., Almeida, F., Matos, T., & Reis, J. (2009). Wine Quality [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C56S3T.
+Cortez, P., Cerdeira, A., Almeida, F., Matos, T., & Reis, J. (2009). Wine Quality [Dataset]. UCI Machine Learning Repository. https://archive.ics.uci.edu/dataset/186/wine+quality.
 
 Feature Importance with Random Forests. (05 Apr, 2024)
 https://www.geeksforgeeks.org/feature-importance-with-random-forests/
