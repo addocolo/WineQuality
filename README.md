@@ -54,7 +54,7 @@ For our EDA we will examine several visualizations of our data.
 
 ### Further Cleaning and Preprocessing
 
-From our correlation matrix we see that the 'free sulfur dioxide' and 'total sulfur dioxide' were quite strongly correlated (0.72) though not perfectly collinear. While this is a strong correlation, we believed that it was not strong enough to indicate collinearity and as such decided not to combine them. Doing so may slightly improve the Logistic Regression model, but we believe it could only work to the detriment of the other models since the random forest and gradient boosting models can handle multicollinearity better and benefit from having both features. Additionally, preserving both 'free sulfur dioxide' and 'total sulfur dioxide' allows us to retain more nuanced information in our dataset, which may be beneficial for interpreting the results.
+From our correlation matrix we see that the 'free sulfur dioxide' and 'total sulfur dioxide' were quite strongly correlated (0.72) though not perfectly collinear. While this is a strong correlation, we believed that it was not strong enough to indicate collinearity. As such decided not to take measures to control their interaction. Doing so may slightly improve the Logistic Regression model, but we believe it could only work to the detriment of the other models since the random forest and gradient boosting models can handle multicollinearity better and benefit from having both features. Additionally, preserving both 'free sulfur dioxide' and 'total sulfur dioxide' allows us to retain more nuanced information in our dataset, which may be beneficial for interpreting the results.
 
 From our Exploratory Data Analysis (EDA), it is clear that we have a potential issue with outliers in our data. As a result, we numerically identified features positive skew and applied a log transformation to them. This transformation helps reduce the impact of skewness, bringing the data closer to a normal distribution. Stabilizing the variance in this manner should improve the performance, especially for models like Logistic Regression and K-Nearest Neighbors, which are more susceptible to skewed distributions.
 
@@ -105,11 +105,11 @@ In this section, we present the results of our analysis and model evaluation. We
 
 1. **Model Performance Comparison**: We evaluated several supervised learning models to classify wines as "high" or "low" quality based on their chemical features. Our goal was to determine which model offers the best predictive performance.   
 
-   - **Top Performing Model by Type**: To further explore model performance, we identified the top-performing model for each classifier type. The table below presents the best model of each type, along with their respective mean test accuracy scores and hyperparameters. The top perfoming model was a Gradient Boosting Classifier with parameters outlined in the chart below. This model performed adequately with a 3-fold mean F1 score of 0.772505. This suggests a good, but not ideal, balance between identifying both classes. The top Random Forest model was very competitive with our top model with an F1 score of 0.771026 as was K-Neighbors with an F1 score of 0.770214. The Logistic Regression models were also competitive but a little behind the other methods.
+   - **Top Performing Model by Type**: To further explore model performance, we identified the top-performing model for each classifier type. The table below presents the best model of each type, along with their respective mean test accuracy scores and hyperparameters. The top perfoming model was a Gradient Boosting Classifier with parameters outlined in the chart below. This model performed adequately with a 3-fold mean F1 score of 0.772505. This suggests a good, but not ideal, balance between identifying both classes. The top Random Forest model was very competitive with our top model with an F1 score of 0.771026 as was K-Neighbors with an F1 score of 0.770214. The top Logistic Regression model was also competitive but a little behind the other methods.
 
 ![5 - top models](https://github.com/user-attachments/assets/a3242346-4456-4276-a580-031795bcabaa)
 
-   - **Box Plot of Mean Test Accuracy Scores**: We also visualized the distribution of mean test accuracy scores for all classifiers using a box plot. This helps to understand the variability in performance across different models and highlights the models that consistently achieve high accuracy. The plot reveals that across all tested parameters all four models have close mean accuracies ranging from approximately 0.75 to 0.76. The Logistic Regression classifier was the most consistent performer and had the highest mean across all models, although it's best models didn't perform as well as some other methods. The Random Forest classifier was also relatively consistent and seemed to be immune to the lower end performance of some other models, perhaps because it does a good job of avoiding overfitting.
+   - **Box Plot of Mean Test Accuracy Scores**: We also visualized the distribution of mean test accuracy scores for all classifiers using a box plot. This helps to understand the variability in performance across different models and highlights the models that consistently achieve high accuracy. The plot reveals that across all tested parameters all four models have close mean F1 scores ranging from approximately 0.75 to 0.76. The Logistic Regression classifier was the most consistent performer and had the highest mean across all models, although it's best models didn't perform as well as some other methods. The Random Forest classifier was also relatively consistent and seemed to be immune to the lower end performance of some other models, perhaps because it does a good job of avoiding overfitting.
 
 ![6 - model accuracies](https://github.com/user-attachments/assets/9804dcb3-2a15-455e-a6d3-937c92598198)
 
@@ -124,10 +124,10 @@ In this section, we present the results of our analysis and model evaluation. We
 ![7a - top model class report](https://github.com/user-attachments/assets/95c3c3da-791a-49c1-a268-c0b8e24a491f)
    
    - **Confusion Matrix Evaluation**
-      - True Low (187): The model correctly identified 174 low-quality wines.
-      - True High (206): The model correctly identified 209 high-quality wines.
-      - False Low (36): 89 high-quality wines were incorrectly classified as low-quality.
-      - False High (76): 33 low-quality wines were incorrectly classified as high-quality.
+      - True Low (187): The model correctly identified 187 low-quality wines.
+      - True High (206): The model correctly identified 206 high-quality wines.
+      - False Low (36): 36 high-quality wines were incorrectly classified as low-quality.
+      - False High (76): 76 low-quality wines were incorrectly classified as high-quality.
 
       The confusion matrix shows a respectable performance, with high numbers of true High and true Low classifications. While there are some misclassifications, the overall distribution suggests that the model is adept at distinguishing between high and low-quality wines, especially given the balanced nature of the F1 scores.
 
