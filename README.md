@@ -22,7 +22,7 @@ The main steps of our analysis include:
 
 ### Importing and initial cleaning of data
 
-The initial step involved importing the data and checking for any duplicates or invalid entries. The dataset is composed of 4,898 white wines and 1,599 red wines. There are 11 chemical features and one target: quality. The chemical features and all are numerical variables. The features are fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, and alcohol.
+The initial step involved importing the data and checking for any duplicates or invalid entries. The dataset is composed of 4,898 white wines and 1,599 red wines. There are 11 chemical features and one target: quality. The chemical features are all positive float type   variables. The features are fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, and alcohol.
 
 Upon initial inspection, we noticed several duplicate entries in both the red and white wine datasets, which were subsequently removed.
 
@@ -36,7 +36,7 @@ An inspection of the mean and maximum values of our features revealed some extre
 
 For our EDA we will examine several visualizations of our data.
 
-1. **Bar chart of wine qualities stacked**: The bar chart illustrates the distribution of wine qualities across both red and white wines. Quality scores range from 3 to 9, with scores of 5 and 6 being the most frequent and representing the majority of the data. Conversely, there are relatively few quality scores of 3 and 9, which represent outliers of very low and very high quality, respectively. These trends persist across both red and white wines.
+1. **Bar chart of wine qualities**: The bar chart illustrates the distribution of wine qualities across both red and white wines. Quality scores are 0 for low quality and 1 for high quality. The data is quite unbalanced with samples of low quality outnumbering high at about 4:1. This was by design since high quality wine implies some level of exclusivity. Conversely, there are relatively few quality scores of 3 and 9, which represent outliers of very low and very high quality, respectively. This imbalance persist across both red and white wines.
 
 ![image](https://github.com/user-attachments/assets/f1a4619d-bb6c-4646-a21c-d63c85a59611)
 
@@ -44,7 +44,7 @@ For our EDA we will examine several visualizations of our data.
 
 ![image](https://github.com/user-attachments/assets/e719143e-909b-420e-8965-9fc58b863bed)
 
-3. **Feature Correlation Matrix**: The correlation matrix presents the relationships between various chemical properties and their impact on wine quality. Certain features like alcohol content have a moderate positive correlation with wine quality, suggesting that higher alcohol levels are associated with better quality wines. Conversely, features like volatile acidity show a negative correlation with quality, indicating that lower acidity is preferred. Perhaps unsurprisingly free sulfur dioxide and total sulfur dioxide are strongly correlated. Interestingly, it also identifies some features, such as volatiles acidity and total_sulfur dioxide, that are correlated with type, indicating how we might differentiate red from white by chemical features.
+3. **Feature Correlation Matrix**: The correlation matrix presents the relationships between various chemical properties and their impact on wine quality. Certain features like alcohol content have a moderate positive correlation with wine quality, suggesting that higher alcohol levels are associated with better quality wines. Conversely, features like volatile acidity show a negative correlation with quality, indicating that lower acidity is preferred. Perhaps unsurprisingly free sulfur dioxide and total sulfur dioxide are strongly correlated. Interestingly, it also identifies some features, such as volatiles acidity and total sulfur dioxide, that are correlated with type, indicating how we might differentiate red from white by chemical features.
 
 ![image](https://github.com/user-attachments/assets/d712c9c6-c659-450e-8684-0e39ced15588)
 
@@ -56,7 +56,7 @@ For our EDA we will examine several visualizations of our data.
 
 From our correlation matrix we see that the 'free sulfur dioxide' and 'total sulfur dioxide' were quite strongly correlated (0.72) though not perfectly collinear. While this is a strong correlation, we believed that it was not strong enough to indicate collinearity and as such decided not to combine them. Doing so may slightly improve the Logistic Regression model, but we believe it could only work to the detriment of the other models since the random forest and gradient boosting models can handle multicollinearity better and benefit from having both features. Additionally, preserving both 'free sulfur dioxide' and 'total sulfur dioxide' allows us to retain more nuanced information in our dataset, which may be beneficial for interpreting the results.
 
-From our Exploratory Data Analysis (EDA), it is clear that we have a potential issue with outliers in our data. As a result, we numerically identified features with extreme outliers or positive skew and applied a log transformation to them. This transformation helps reduce the impact of skewness, bringing the data closer to a normal distribution. Stabilizing the variance in this manner should improve the performance, especially for models like Logistic Regression and K-Nearest Neighbors, which are more susceptible to skewed distributions.
+From our Exploratory Data Analysis (EDA), it is clear that we have a potential issue with outliers in our data. As a result, we numerically identified features positive skew and applied a log transformation to them. This transformation helps reduce the impact of skewness, bringing the data closer to a normal distribution. Stabilizing the variance in this manner should improve the performance, especially for models like Logistic Regression and K-Nearest Neighbors, which are more susceptible to skewed distributions.
 
 To further address extreme outliers, we applied Winsorization by clipping the data at the 1st and 99th percentiles. This technique ensures that extreme outliers do not disproportionately influence the models, leading to more robust predictions.
 
@@ -77,7 +77,7 @@ To establish a performance benchmark, we trained four supervised classification 
 
 Each model was chosen to offer a mix of linear, tree-based, and instance-based approaches, allowing us to compare different learning paradigms before refining the best-performing model.
 
-All models had accuracy, F1, and ROC-AUC scores within the range of 0.74-0.77. Based on these baseline results, our initial test did not strongly favor any particular model over the others. Therefore, we proceeded to the refinement stage with all four models. Although K-Neighbors lagged slightly behind the other classifiers, the difference was not significant enough to eliminate it at this stage.
+All models had accuracy, F1, and ROC-AUC scores within the range of 0.75-0.80. Based on these baseline results, our initial test did not strongly favor any particular model over the others. Therefore, we proceeded to the refinement stage with all four models. Although K-Neighbors lagged slightly behind the other classifiers, the difference was not significant enough to eliminate it at this stage.
 
 ![baseline results](https://github.com/user-attachments/assets/07730800-2fd4-4fcb-ad7b-fa025f764f83)
 
